@@ -219,7 +219,7 @@
         .extensions-section {
             padding: 100px 60px;
             position: relative;
-            height: 1000px;
+            height: 1100px;
         }
         
         .extensions-content {
@@ -235,9 +235,11 @@
         
         .extensions-title {
             color: white;
-            font-size: 56px;
+            font-size: 60px;
             font-weight: 500;
             line-height: 1.1;
+            position: relative;
+            top: -50px;
             margin-bottom: 40px;
         }
         
@@ -247,8 +249,9 @@
         }
         
         .feature-item {
-            margin-bottom: 24px;
+            margin-bottom: 25px;
             position: relative;
+            padding-bottom: 0;
         }
         
         .feature-title {
@@ -284,12 +287,31 @@
             opacity: 1;
         }
         
-        .feature-desc div {
-            color: #888888;
-            font-size: 16px;
+        .feature-text {
+            color: #999999;
+            font-size: 18px;
             line-height: 1.6;
             padding-top: 8px;
-            width: 280px;
+            width: 300px;
+            font-weight: 400;
+        }
+        
+        .feature-link {
+            color: #d2d0d0;
+            font-size: 18px;
+            padding-top: 20px;
+            padding-bottom: 15px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: block;
+        }
+        
+        .feature-link:hover {
+            color: #7A7A7A;
+        }
+        
+        .feature-item:not(:first-child)::before {
+            content: none;
         }
         
         .feature-item:not(:last-child)::after {
@@ -297,9 +319,9 @@
             display: block;
             width: 100%;
             height: 1px;
-            background-color: #333333;
-            opacity: 0.3;
-            margin-top: 24px;
+            background-color: #1A1A1A;
+            opacity: 1;
+            margin-top: 25px;
         }
         
         .right-card {
@@ -307,7 +329,7 @@
             left: 40%;
             right: -100px;
             top: 230px;
-            height: 600px;
+            height: 750px;
             border: 1px solid #333333;
             border-radius: 16px;
             background-color: #1a1a1a;
@@ -580,23 +602,44 @@
                 
                 <div class="feature-list">
                     <div class="feature-item active">
-                        <h3 class="feature-title">Analytics</h3>
+                        <h3 class="feature-title">AI</h3>
                         <div class="feature-desc">
-                            <div>Track traffic, measure performance, and monitor conversions.</div>
+                            <div>
+                                <div class="feature-text">
+                                    Generate site layouts and advanced components in seconds with AI, so you can skip the blank canvas and start designing with confidence.
+                                </div>
+                                <div class="feature-link">
+                                    Learn more →
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="feature-item">
-                        <h3 class="feature-title">A/B Testing</h3>
+                        <h3 class="feature-title">Design</h3>
                         <div class="feature-desc">
-                            <div>Test variations and optimize for better results.</div>
+                            <div>
+                                <div class="feature-text">
+                                    Test variations and optimize for better results.
+                                </div>
+                                <div class="feature-link">
+                                    Learn more →
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="feature-item">
-                        <h3 class="feature-title">SEO</h3>
+                        <h3 class="feature-title">CMS</h3>
                         <div class="feature-desc">
-                            <div>Improve your search engine rankings.</div>
+                            <div>
+                                <div class="feature-text">
+                                    Improve your search engine rankings.
+                                </div>
+                                <div class="feature-link">
+                                    Learn more →
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
