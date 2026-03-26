@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Framer Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #FFFFFF;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            background: linear-gradient(135deg, #5B8DEF, #9B51E0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: #999999;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+        
+        .nav-link:hover {
+            color: white;
+        }
+        
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .log-in {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        
+        .sign-up-btn {
+            background: white;
+            color: black;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        
+        .hero {
+            padding-top: 150px;
+            padding-left: 60px;
+            padding-right: 60px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            color: white;
+            font-size: 100px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero-subtitle {
+            color: #999999;
+            font-size: 24px;
+            max-width: 550px;
+            margin: 0 auto 32px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        /* 强制覆盖按钮样式 */
+        .hero-buttons .btn-primary,
+        .hero-section .btn-primary,
+        #hero .btn-primary {
+            background: white !important;
+            color: black !important;
+            padding: 10px 15px !important;
+            border-radius: 9999px !important;
+            font-weight: 500 !important;
+            font-size: 16px !important;
+            transition: background-color 0.3s ease, color 0.3s ease !important;
+            transform: none !important; /* 禁止放大 */
+            border: none !important; /* 无描边 */
+        }
+        
+        .hero-buttons .btn-primary:hover,
+        .hero-section .btn-primary:hover,
+        #hero .btn-primary:hover {
+            background: #B2B2B2 !important;
+            color: #000000 !important;
+            transform: none !important; /* 禁止放大 */
+            box-shadow: none !important; /* 禁止阴影 */
+        }
+        
+        .hero-buttons .btn-secondary,
+        .hero-section .btn-secondary,
+        #hero .btn-secondary {
+            background: #333333 !important;
+            color: white !important;
+            padding: 10px 15px !important;
+            border-radius: 9999px !important;
+            font-weight: 500 !important;
+            font-size: 16px !important;
+            transition: background-color 0.3s ease, color 0.3s ease !important;
+            transform: none !important; /* 禁止放大 */
+            border: none !important; /* 无描边 */
+        }
+        
+        .hero-buttons .btn-secondary:hover,
+        .hero-section .btn-secondary:hover,
+        #hero .btn-secondary:hover {
+            background: #222222 !important;
+            color: #888888 !important;
+            transform: none !important; /* 禁止放大 */
+            box-shadow: none !important; /* 禁止阴影 */
+        }
+        
+        .card-section {
+            padding: 60px;
+            position: relative;
+        }
+        
+        .card-section-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to bottom, transparent, #000000);
+            pointer-events: none;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 300px;
+            gap: 20px;
+        }
+        
+        .card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 40px 24px;
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+        }
+        
+        .card.visible {
+            opacity: 1;
+        }
+        
+        .card.narrow {
+            grid-column: span 1;
+        }
+        
+        .card.wide {
+            grid-column: span 2;
+        }
+        
+        .card.tall {
+            grid-row: span 2;
+        }
+        
+        section.card-section > div.card-grid > div.card:nth-child(4) {
+            height: 620px;
+        }
+        
+        .card h3 {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .card p {
+            color: #888888;
+            font-size: 14px;
+        }
+        
+        .extensions-section {
+            padding: 100px 60px;
+            position: relative;
+            height: 1000px;
+        }
+        
+        .extensions-content {
+            display: flex;
+            gap: 60px;
+            position: relative;
+        }
+        
+        .extensions-left {
+            flex: 0 0 40%;
+            margin-left: 300px;
+        }
+        
+        .extensions-title {
+            color: white;
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-bottom: 40px;
+        }
+        
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-item {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .feature-title {
+            color: #666666;
+            font-size: 24px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            margin-bottom: 0;
+        }
+        
+        .feature-title:hover {
+            color: #999999;
+        }
+        
+        .feature-item.active .feature-title {
+            color: #FFFFFF;
+        }
+        
+        .feature-desc {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.4s ease, opacity 0.3s ease;
+        }
+        
+        .feature-desc > div {
+            overflow: hidden;
+        }
+        
+        .feature-item.active .feature-desc {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+        
+        .feature-desc div {
+            color: #888888;
+            font-size: 16px;
+            line-height: 1.6;
+            padding-top: 8px;
+            width: 280px;
+        }
+        
+        .feature-item:not(:last-child)::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #333333;
+            opacity: 0.3;
+            margin-top: 24px;
+        }
+        
+        .right-card {
+            position: absolute;
+            left: 40%;
+            right: -100px;
+            top: 230px;
+            height: 600px;
+            border: 1px solid #333333;
+            border-radius: 16px;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-fade-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,1));
+        }
+        
+        .card-content {
+            color: #666666;
+            font-size: 16px;
+        }
+        
+        .word-grid-section {
+            padding: 80px 60px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .word-grid {
+            width: 33.33%;
+            height: 20vh;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 16px;
+            align-items: center;
+            justify-items: center;
+            position: relative;
+        }
+        
+        .word-item {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            transition: filter 0.3s ease;
+        }
+        
+        .word-grid:hover .word-item {
+            filter: blur(8px);
+        }
+        
+        .reveal-link {
+            position: absolute;
+            color: white;
+            text-decoration: underline;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .word-grid:hover .reveal-link {
+            opacity: 1;
+        }
+        
+        .logo-wall-section {
+            padding: 80px 60px;
+        }
+        
+        .logo-wall-title {
+            text-align: center;
+            color: #999999;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+        
+        .logo-placeholder {
+            background: #1a1a1a;
+            border-radius: 12px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .testimonials-section {
+            padding: 80px 60px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        
+        .testimonial-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        .testimonial-quote {
+            color: white;
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .testimonial-name {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .testimonial-role {
+            color: #888888;
+            font-size: 14px;
+        }
+        
+        .footer {
+            padding: 60px 60px;
+            border-top: 1px solid #333333;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            background: linear-gradient(135deg, #5B8DEF, #9B51E0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .footer-link {
+            color: #999999;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .footer-copyright {
+            color: #666666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">framer</div>
+        
+        <div class="nav-links">
+            <a href="#" class="nav-link">Product</a>
+            <a href="#" class="nav-link">Teams</a>
+            <a href="#" class="nav-link">Resources</a>
+            <a href="#" class="nav-link">Pricing</a>
+            <a href="#" class="nav-link">Templates</a>
+        </div>
+        
+        <div class="nav-right">
+            <a href="#" class="log-in">Log in</a>
+            <a href="#" class="sign-up-btn">Sign up</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hero-title">Build better<br>sites, faster</h1>
+        <p class="hero-subtitle">Framer is the site builder trusted by leading startups and Fortune 500 companies. Build fast and scale more easily with an integrated CMS, analytics, localization, and SEO.</p>
+        <div class="hero-buttons">
+            <button class="btn-primary">Start for free</button>
+            <button class="btn-secondary">Start with AI</button>
+        </div>
+    </section>
+
+    <section class="card-section">
+        <div class="card-grid">
+            <!-- 第一行（6个位置） -->
+            <div class="card narrow">
+                <h3>AI</h3>
+                <p>AI-powered design</p>
+            </div>
+            <div class="card wide">
+                <h3>Design</h3>
+                <p>Visual design editor</p>
+            </div>
+            <div class="card wide">
+                <h3>CMS</h3>
+                <p>Content management</p>
+            </div>
+            <div class="card narrow">
+                <h3>Collaborate</h3>
+                <p>Team work</p>
+            </div>
+            <div class="card wide">
+                <h3>Analytics</h3>
+                <p>Track performance</p>
+            </div>
+            <div class="card wide tall">
+                <h3>Hosting</h3>
+                <p>Fast hosting</p>
+            </div> <!-- 占2行 -->
+            
+            <!-- 第二行（5个位置，因为Hosting占了一个） -->
+            <div class="card narrow">
+                <h3>Performance</h3>
+                <p>Optimized speed</p>
+            </div>
+            <div class="card wide">
+                <h3>Security</h3>
+                <p>Secure by default</p>
+            </div>
+            <div class="card wide">
+                <h3>Version Control</h3>
+                <p>Track changes</p>
+            </div>
+
+
+        </div>
+        <div class="card-section-overlay"></div>
+    </section>
+
+    <section class="word-grid-section">
+        <div class="word-grid">
+            <div class="word-item">Dribbble</div>
+            <div class="word-item">ElevenLabs</div>
+            <div class="word-item">Zapier</div>
+            <div class="word-item">Perplexity</div>
+            <div class="word-item">Cal.com</div>
+            <div class="word-item">Linear</div>
+            <div class="word-item">Figma</div>
+            <div class="word-item">Vercel</div>
+            <div class="reveal-link">Learn more →</div>
+        </div>
+    </section>
+
+    <section class="extensions-section">
+        <div class="extensions-content">
+            <div class="extensions-left">
+                <h1 class="extensions-title">
+                    Create,<br>
+                    collaborate,<br>
+                    and go live
+                </h1>
+                
+                <div class="feature-list">
+                    <div class="feature-item active">
+                        <h3 class="feature-title">Analytics</h3>
+                        <div class="feature-desc">
+                            <div>Track traffic, measure performance, and monitor conversions.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <h3 class="feature-title">A/B Testing</h3>
+                        <div class="feature-desc">
+                            <div>Test variations and optimize for better results.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <h3 class="feature-title">SEO</h3>
+                        <div class="feature-desc">
+                            <div>Improve your search engine rankings.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-card">
+                <div class="card-content">
+                    卡片内容
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="logo-wall-section">
+        <p class="logo-wall-title">Trusted by the best teams</p>
+        <div class="logo-grid">
+            <div class="logo-placeholder">Logo 1</div>
+            <div class="logo-placeholder">Logo 2</div>
+            <div class="logo-placeholder">Logo 3</div>
+            <div class="logo-placeholder">Logo 4</div>
+            <div class="logo-placeholder">Logo 5</div>
+            <div class="logo-placeholder">Logo 6</div>
+            <div class="logo-placeholder">Logo 7</div>
+            <div class="logo-placeholder">Logo 8</div>
+            <div class="logo-placeholder">Logo 9</div>
+            <div class="logo-placeholder">Logo 10</div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
+                </p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">Henry Modisett</span>
+                    <span class="testimonial-role">Head of Design at Perplexity</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-quote">
+                    "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
+                </p>
+                <div class="testimonial-author">
+                    <span class="testimonial-name">Radoslav Bali</span>
+                    <span class="testimonial-role">Design Lead at Miro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">framer</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">About</a>
+                <a href="#" class="footer-link">Careers</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Terms</a>
+            </div>
+            <p class="footer-copyright">© 2024 Framer</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => card.classList.add('visible'));
+            
+            const firstFeature = document.querySelector('.feature-item');
+            if (firstFeature) {
+                firstFeature.classList.add('active');
+            }
+            
+            document.querySelectorAll('.feature-title').forEach(title => {
+                title.addEventListener('click', function() {
+                    document.querySelectorAll('.feature-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.parentElement.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
