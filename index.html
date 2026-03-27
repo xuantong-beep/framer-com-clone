@@ -678,13 +678,11 @@
         }
         
         .experts-content {
-            margin-left: calc((100% - 1200px) / 2);
         }
         
         .experts-cards-container {
             max-width: 1200px;
             margin-left: calc((100% - 1200px) / 2);
-            margin-top: 60px;
             overflow: hidden;
         }
         
@@ -692,6 +690,7 @@
             display: flex;
             gap: 0;
             transition: transform 0.5s ease;
+            margin-top: 60px;
         }
         
         .expert-card {
@@ -707,8 +706,16 @@
         .experts-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: flex-end;
             margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: calc((100% - 1200px) / 2);
+            margin-right: auto;
+        }
+        
+        .experts-buttons {
+            display: flex;
+            gap: 12px;
         }
         
         .experts-title {
@@ -883,6 +890,145 @@
         
         .experts-scroll-dot.active {
             background-color: #ffffff;
+        }
+        
+        .resources-section {
+            padding: 100px 60px;
+            background-color: #000000;
+        }
+        
+        .resources-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            max-width: 1200px;
+            margin-left: calc((100% - 1200px) / 2);
+            margin-right: auto;
+        }
+        
+        .resources-title {
+            color: white;
+            font-size: 48px;
+            font-weight: 500;
+            line-height: 1.1;
+            margin: 0;
+        }
+        
+        .resources-tabs {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .resources-tab {
+            background-color: #1a1a1a;
+            color: #888888;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .resources-tab:hover {
+            background-color: #2a2a2a;
+            color: white;
+        }
+        
+        .resources-tab.active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        .resources-grid-container {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        
+        .resources-row {
+            display: flex;
+            gap: 0;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+        
+        .resources-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        @keyframes scroll-right {
+            0% {
+                transform: translateX(-50%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        #resources-row-1 {
+            animation: scroll-left 30s linear infinite;
+        }
+        
+        #resources-row-2 {
+            animation: scroll-right 30s linear infinite;
+        }
+        
+        .resource-card {
+            flex: 0 0 232px;
+            margin-right: 10px;
+            min-width: 0;
+            background-color: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 262.5px;
+        }
+        
+        .resource-preview {
+            height: 200px;
+            background-color: #2a2a2a;
+        }
+        
+        .resource-info {
+            height: 62.5px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .resource-avatar {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #333333, #555555);
+            border-radius: 50%;
+        }
+        
+        .resource-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resource-name {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .resource-type {
+            color: #888888;
+            font-size: 12px;
         }
         
         .logo-wall-section {
@@ -1512,6 +1658,463 @@
         <div class="experts-scroll-nav">
             <div class="experts-scroll-dot active" id="experts-dot-0"></div>
             <div class="experts-scroll-dot" id="experts-dot-1"></div>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <div class="resources-header">
+            <h2 class="resources-title">Launch faster with<br>community resources</h2>
+            <div class="resources-tabs">
+                <span class="resources-tab active">Templates</span>
+                <span class="resources-tab">Plugins</span>
+                <span class="resources-tab">Components</span>
+            </div>
+        </div>
+        
+        <div class="resources-grid-container">
+            <div class="resources-row" id="resources-row-1">
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Notion</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Hour Zoom</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Archer</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Workshop</div>
+                            <div class="resource-type">Plugin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Image Slider</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Notion</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Hour Zoom</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Archer</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Workshop</div>
+                            <div class="resource-type">Plugin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Image Slider</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Notion</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Hour Zoom</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Archer</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Workshop</div>
+                            <div class="resource-type">Plugin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Image Slider</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Notion</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Hour Zoom</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Archer</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Workshop</div>
+                            <div class="resource-type">Plugin</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Image Slider</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resources-row" id="resources-row-2">
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Milos</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Baseform</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Digital Rotary Radio</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Apex Films</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Flip Card</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Milos</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Baseform</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Digital Rotary Radio</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Apex Films</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Flip Card</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Milos</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Baseform</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Digital Rotary Radio</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Apex Films</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Flip Card</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Milos</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Baseform</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Digital Rotary Radio</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Apex Films</div>
+                            <div class="resource-type">Template</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-preview"></div>
+                    <div class="resource-info">
+                        <div class="resource-avatar"></div>
+                        <div class="resource-details">
+                            <div class="resource-name">Flip Card</div>
+                            <div class="resource-type">Component</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
