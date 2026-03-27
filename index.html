@@ -976,18 +976,17 @@
         }
         
         #resources-row-1 {
-            animation: scroll-left 30s linear infinite;
+            animation: scroll-left 60s linear infinite;
         }
         
         #resources-row-2 {
-            animation: scroll-right 30s linear infinite;
+            animation: scroll-right 60s linear infinite;
         }
         
         .resource-card {
-            flex: 0 0 400px;
+            flex: 0 0 350px;
             margin-right: 10px;
             min-width: 0;
-            background-color: #1a1a1a;
             border-radius: 16px;
             overflow: hidden;
             display: flex;
@@ -998,6 +997,54 @@
         .resource-preview {
             height: 200px;
             background-color: #2a2a2a;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        
+        .resource-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0);
+            transition: background-color 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .resource-view-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .resource-card:hover .resource-card-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .resource-card:hover .resource-view-btn {
+            opacity: 1;
+        }
+        
+        .resource-card:hover .resource-name {
+            color: #999999;
+        }
+        
+        .resource-card:hover .resource-type {
+            color: #444444;
         }
         
         .resource-info {
@@ -1005,15 +1052,9 @@
             padding: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
         }
         
-        .resource-avatar {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #333333, #555555);
-            border-radius: 50%;
-        }
+
         
         .resource-details {
             display: flex;
@@ -1674,9 +1715,11 @@
         <div class="resources-grid-container">
             <div class="resources-row" id="resources-row-1">
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Notion</div>
                             <div class="resource-type">Template</div>
@@ -1685,9 +1728,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Hour Zoom</div>
                             <div class="resource-type">Component</div>
@@ -1696,9 +1741,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Archer</div>
                             <div class="resource-type">Template</div>
@@ -1707,9 +1754,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Workshop</div>
                             <div class="resource-type">Plugin</div>
@@ -1718,9 +1767,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Image Slider</div>
                             <div class="resource-type">Component</div>
@@ -1729,9 +1780,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Notion</div>
                             <div class="resource-type">Template</div>
@@ -1740,9 +1793,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Hour Zoom</div>
                             <div class="resource-type">Component</div>
@@ -1751,9 +1806,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Archer</div>
                             <div class="resource-type">Template</div>
@@ -1762,9 +1819,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Workshop</div>
                             <div class="resource-type">Plugin</div>
@@ -1773,9 +1832,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Image Slider</div>
                             <div class="resource-type">Component</div>
@@ -1784,9 +1845,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Notion</div>
                             <div class="resource-type">Template</div>
@@ -1795,9 +1858,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Hour Zoom</div>
                             <div class="resource-type">Component</div>
@@ -1806,9 +1871,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Archer</div>
                             <div class="resource-type">Template</div>
@@ -1817,9 +1884,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Workshop</div>
                             <div class="resource-type">Plugin</div>
@@ -1828,9 +1897,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Image Slider</div>
                             <div class="resource-type">Component</div>
@@ -1839,9 +1910,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Notion</div>
                             <div class="resource-type">Template</div>
@@ -1850,9 +1923,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Hour Zoom</div>
                             <div class="resource-type">Component</div>
@@ -1861,9 +1936,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Archer</div>
                             <div class="resource-type">Template</div>
@@ -1872,9 +1949,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Workshop</div>
                             <div class="resource-type">Plugin</div>
@@ -1883,9 +1962,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Image Slider</div>
                             <div class="resource-type">Component</div>
@@ -1896,9 +1977,11 @@
             
             <div class="resources-row" id="resources-row-2">
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Milos</div>
                             <div class="resource-type">Template</div>
@@ -1907,9 +1990,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Baseform</div>
                             <div class="resource-type">Template</div>
@@ -1918,9 +2003,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Digital Rotary Radio</div>
                             <div class="resource-type">Component</div>
@@ -1929,9 +2016,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Apex Films</div>
                             <div class="resource-type">Template</div>
@@ -1940,9 +2029,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Flip Card</div>
                             <div class="resource-type">Component</div>
@@ -1951,9 +2042,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Milos</div>
                             <div class="resource-type">Template</div>
@@ -1962,9 +2055,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Baseform</div>
                             <div class="resource-type">Template</div>
@@ -1973,9 +2068,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Digital Rotary Radio</div>
                             <div class="resource-type">Component</div>
@@ -1984,9 +2081,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Apex Films</div>
                             <div class="resource-type">Template</div>
@@ -1995,9 +2094,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Flip Card</div>
                             <div class="resource-type">Component</div>
@@ -2006,9 +2107,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Milos</div>
                             <div class="resource-type">Template</div>
@@ -2017,9 +2120,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Baseform</div>
                             <div class="resource-type">Template</div>
@@ -2028,9 +2133,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Digital Rotary Radio</div>
                             <div class="resource-type">Component</div>
@@ -2039,9 +2146,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Apex Films</div>
                             <div class="resource-type">Template</div>
@@ -2050,9 +2159,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Flip Card</div>
                             <div class="resource-type">Component</div>
@@ -2061,9 +2172,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Milos</div>
                             <div class="resource-type">Template</div>
@@ -2072,9 +2185,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Baseform</div>
                             <div class="resource-type">Template</div>
@@ -2083,9 +2198,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Digital Rotary Radio</div>
                             <div class="resource-type">Component</div>
@@ -2094,9 +2211,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Apex Films</div>
                             <div class="resource-type">Template</div>
@@ -2105,9 +2224,11 @@
                 </div>
                 
                 <div class="resource-card">
-                    <div class="resource-preview"></div>
+                    <div class="resource-preview">
+                        <div class="resource-card-overlay"></div>
+                        <button class="resource-view-btn">View Resource</button>
+                    </div>
                     <div class="resource-info">
-                        <div class="resource-avatar"></div>
                         <div class="resource-details">
                             <div class="resource-name">Flip Card</div>
                             <div class="resource-type">Component</div>
