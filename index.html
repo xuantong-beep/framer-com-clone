@@ -103,7 +103,7 @@
         
         .hero-buttons {
             display: flex;
-            gap: 16px;
+            gap: 10px;
             justify-content: center;
         }
         
@@ -760,7 +760,7 @@
             display: flex;
             gap: 0;
             transition: transform 0.5s ease;
-            margin-top: 60px;
+            margin-top: 0px;
         }
         
         .expert-card {
@@ -785,7 +785,7 @@
         
         .experts-buttons {
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
         
         .experts-title {
@@ -794,11 +794,6 @@
             font-weight: 500;
             line-height: 1.1;
             margin: 0;
-        }
-        
-        .experts-buttons {
-            display: flex;
-            gap: 12px;
         }
         
         .btn-experts-primary {
@@ -998,27 +993,29 @@
         
         .resources-tabs {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
         
         .resources-tab {
-            background-color: #1a1a1a;
-            color: #888888;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 12px;
+            background: #333333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 9999px;
+            font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .resources-tab:hover {
-            background-color: #2a2a2a;
-            color: white;
+            background: #222222;
+            color: #888888;
         }
         
         .resources-tab.active {
-            background-color: #ffffff;
-            color: #000000;
+            background: white;
+            color: black;
         }
         
         .resources-grid-container {
@@ -1824,7 +1821,7 @@
         <div class="resources-header">
             <h2 class="resources-title">Launch faster with<br>community resources</h2>
             <div class="resources-tabs">
-                <span class="resources-tab active">Templates</span>
+                <span class="resources-tab">Templates</span>
                 <span class="resources-tab">Plugins</span>
                 <span class="resources-tab">Components</span>
             </div>
