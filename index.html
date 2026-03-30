@@ -182,6 +182,30 @@
             padding: 40px 24px;
             opacity: 0;
             transition: opacity 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card .card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .card .card-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 25%;
+            opacity: 1;
+        }
+
+        .card .card-content {
+            position: relative;
+            z-index: 1;
         }
         
         .card.visible {
@@ -330,13 +354,14 @@
             min-width: 0;
             height: 750px;
             border: 1px solid #333333;
-            border-radius: 16px;
+            border-radius: 12px;
             background-color: #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             top: 240px;
+            overflow: hidden;
         }
         
         .card-fade-overlay {
@@ -363,30 +388,39 @@
         .card-content-item {
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
             transform: translateY(100%);
             transition: all 0.5s ease;
+            overflow: hidden;
         }
-        
+
         .card-content-item.active {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .card-content-item.slide-out-up {
             opacity: 0;
             transform: translateY(-100%);
         }
-        
+
         .card-preview {
-            color: #666666;
-            font-size: 16px;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .card-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 20%;
+            display: block;
+            opacity: 1;
+            border-radius: 12px;
         }
         
         .scale-section {
@@ -777,6 +811,14 @@
             position: relative;
             overflow: hidden;
             border-radius: 16px 16px 16px 16px;
+        }
+
+        .expert-card-preview img,
+        .resource-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 25%;
         }
         
         .expert-card-overlay {
@@ -1361,42 +1403,51 @@
         <div class="card-grid">
             <!-- 第一行（6个位置） -->
             <div class="card narrow">
-                <h3>AI</h3>
-                <p>AI-powered design</p>
+                <div class="card-bg">
+                    <img src="1/1cf7bd4b-ce12-4288-af97-64b3e58dbf24.jpeg" alt="AI">
+                </div>
             </div>
             <div class="card wide">
-                <h3>Design</h3>
-                <p>Visual design editor</p>
+                <div class="card-bg">
+                    <img src="1/27dd89d5-1d7f-4450-937b-d45ab1ea1f10.jpeg" alt="Design">
+                </div>
             </div>
             <div class="card wide">
-                <h3>CMS</h3>
-                <p>Content management</p>
+                <div class="card-bg">
+                    <img src="1/3d5d4d5d-3e2a-40f1-bd2a-6b263f7dd1ba.jpeg" alt="CMS">
+                </div>
             </div>
             <div class="card narrow">
-                <h3>Collaborate</h3>
-                <p>Team work</p>
+                <div class="card-bg">
+                    <img src="1/5e0d5150-4a60-43a3-b0a4-589f46ee503c.jpeg" alt="Collaborate">
+                </div>
             </div>
             <div class="card wide">
-                <h3>Analytics</h3>
-                <p>Track performance</p>
+                <div class="card-bg">
+                    <img src="1/708007e0-7c47-4f8e-8e6a-55cb311d39c4.jpeg" alt="Analytics">
+                </div>
             </div>
             <div class="card wide tall">
-                <h3>Hosting</h3>
-                <p>Fast hosting</p>
+                <div class="card-bg">
+                    <img src="1/a7e331ee-fb44-4901-8b8d-18920adfd278.jpeg" alt="Hosting">
+                </div>
             </div> <!-- 占2行 -->
             
             <!-- 第二行（5个位置，因为Hosting占了一个） -->
             <div class="card narrow">
-                <h3>Performance</h3>
-                <p>Optimized speed</p>
+                <div class="card-bg">
+                    <img src="1/ad346df7-f651-46c6-86ad-c60d5ba737aa.jpeg" alt="Performance">
+                </div>
             </div>
             <div class="card wide">
-                <h3>Security</h3>
-                <p>Secure by default</p>
+                <div class="card-bg">
+                    <img src="1/fa7b60e7-b820-4713-a544-7cd3de3be297.jpeg" alt="Security">
+                </div>
             </div>
             <div class="card wide">
-                <h3>Version Control</h3>
-                <p>Track changes</p>
+                <div class="card-bg">
+                    <img src="1/b4a41dae-f3e4-4aca-9d4a-8a836a36d022.jpeg" alt="Version Control">
+                </div>
             </div>
 
 
@@ -1489,16 +1540,24 @@
             <div class="right-card">
                 <div class="card-content-container">
                     <div class="card-content-item active" data-feature="AI">
-                        <div class="card-preview">AI Preview</div>
+                        <div class="card-preview">
+                            <img src="go/0fa60fd7-785d-42a0-a6be-cd2058898f57.jpeg" alt="AI Preview">
+                        </div>
                     </div>
                     <div class="card-content-item" data-feature="Design">
-                        <div class="card-preview">Design Preview</div>
+                        <div class="card-preview">
+                            <img src="go/25d63706-6a34-42c2-90d1-7d83b70c7c9d.jpeg" alt="Design Preview">
+                        </div>
                     </div>
                     <div class="card-content-item" data-feature="CMS">
-                        <div class="card-preview">CMS Preview</div>
+                        <div class="card-preview">
+                            <img src="go/44176eb5-34e5-4ddd-a68d-9800da68ee8a.jpeg" alt="CMS Preview">
+                        </div>
                     </div>
                     <div class="card-content-item" data-feature="Collaborate">
-                        <div class="card-preview">Collaborate Preview</div>
+                        <div class="card-preview">
+                            <img src="go/f60edded-d69b-4a98-a8c1-a40c1434e24e.jpeg" alt="Collaborate Preview">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1584,6 +1643,7 @@
             <div class="experts-cards">
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/0399762e-fbf4-4a61-8072-c70245f65a35.jpeg" alt="Atomic Studio">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1598,6 +1658,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/051ed961-8594-40d9-80ba-3e4ddbf4a090.jpeg" alt="Wevlab">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1612,6 +1673,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/0638f46c-8d7a-45f6-83d6-8294d31f1144.jpeg" alt="Adenas Fxs">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1626,6 +1688,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/08a34322-cf2d-4a43-9cf5-2eee2255a15e.jpeg" alt="Diverse Studio">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1640,6 +1703,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/0fbee65e-5b53-4fc9-aaa1-1e8b7e8714eb.jpeg" alt="Studio 5">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1654,6 +1718,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/18fd87c0-c17c-4e2c-924d-f080b7de2084.jpeg" alt="Studio 6">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1668,6 +1733,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/1c4ed2fd-6fc9-4c8e-bf91-ed84dbfa329b.jpeg" alt="Studio 7">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1682,6 +1748,7 @@
                 
                 <div class="expert-card">
                     <div class="expert-card-preview">
+                        <img src="image/1e22564b-b6d7-4b1f-b4b0-5397d8dd1f3b.jpeg" alt="Studio 8">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
@@ -1716,6 +1783,7 @@
             <div class="resources-row" id="resources-row-1">
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/282a5118-408d-482b-9eac-1bb4607d67cf.jpeg" alt="Notion">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1729,6 +1797,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/39fcdd9e-efaa-43cb-96f3-ea447d7c7231.jpeg" alt="Hour Zoom">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1742,6 +1811,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/400531bc-a861-4c58-aa14-bdcd4c632b0e.jpeg" alt="Archer">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1755,6 +1825,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/44176eb5-34e5-4ddd-a68d-9800da68ee8a.jpeg" alt="Workshop">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1768,6 +1839,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/50333ae3-dd23-4a81-9c79-70604835a4f9.jpeg" alt="Image Slider">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1781,6 +1853,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/54786655-ac38-4739-82cc-0314983c4f99.jpeg" alt="Notion">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1794,6 +1867,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/593315e2-2ff3-4532-9afa-cb8e95d6ab9b.jpeg" alt="Hour Zoom">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1807,6 +1881,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/60545e23-96e2-4a47-894b-6875b53f1011.jpeg" alt="Archer">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1820,6 +1895,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/67012924-187a-4078-b931-a3a19e51fdf3.jpeg" alt="Workshop">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1833,6 +1909,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/7005c0c1-2ca4-4d89-a929-1005432d40d0.jpeg" alt="Image Slider">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1846,6 +1923,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/718529b0-7f83-462b-b386-78db47b03317.jpeg" alt="Notion">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1859,6 +1937,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/754a25c6-d681-4bd9-9122-fe4d883cf636.jpeg" alt="Hour Zoom">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1872,6 +1951,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/7a8f5a27-9c63-445d-8534-17afb4b251a6.jpeg" alt="Archer">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1885,6 +1965,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/7ada91a6-3c7f-42f7-9390-3f0b10cf90e7.jpeg" alt="Workshop">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1898,6 +1979,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/7c578d92-c11d-440e-9e44-159941e72fe9.jpeg" alt="Image Slider">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1911,6 +1993,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/7ca4fbba-6eb0-42cc-97a2-5b0c0e0540ff.jpeg" alt="Notion">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1924,6 +2007,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/8c805879-1542-499f-bf87-52ddb2cd8eb5.jpeg" alt="Hour Zoom">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1937,6 +2021,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/91829de2-c770-40bb-8a4e-56ffb79dd4df.jpeg" alt="Archer">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1950,6 +2035,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/9457f8be-05ce-428c-89e4-c8a169b80a6b.jpeg" alt="Workshop">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1963,6 +2049,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/95567f67-68f2-48e6-aff4-3a0b6c9de1d0.jpeg" alt="Image Slider">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1978,6 +2065,7 @@
             <div class="resources-row" id="resources-row-2">
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/9703420e-fa6e-4522-9a51-65921aa67b1f.jpeg" alt="Milos">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -1991,6 +2079,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/975cff49-b011-4db0-b22e-0f00cb92c96b.jpeg" alt="Baseform">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2004,6 +2093,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/aa5c6a20-93d9-4568-a98c-90e578729b8d.jpeg" alt="Digital Rotary Radio">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2017,6 +2107,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/ac8689eb-c73e-4641-ad14-88f899dfb085.jpeg" alt="Apex Films">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2030,6 +2121,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/b0bb43b3-de53-4506-94ee-c753e3f303c4.jpeg" alt="Flip Card">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2043,6 +2135,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/b1c0876c-bc8d-47bc-bcd8-f46f89aa5ab3.jpeg" alt="Milos">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2056,6 +2149,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/bc4132b4-8b96-4f93-b138-450bf311c28b.jpeg" alt="Baseform">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2069,6 +2163,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/bd792404-aefc-4d59-b0ad-007726b60010.jpeg" alt="Digital Rotary Radio">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2082,6 +2177,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/cfe37cad-309d-4b7c-9d34-9e16e9f7d20c.jpeg" alt="Apex Films">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2095,6 +2191,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/d5de6510-d43d-4bac-9997-fd722fe2fe0e.jpeg" alt="Flip Card">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2108,6 +2205,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/e00aa4cc-c6e2-40ee-a910-74ee8a494c53.jpeg" alt="Milos">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2121,6 +2219,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/e664406b-cdd1-48ae-be75-bec2f8189b94.jpeg" alt="Baseform">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2134,6 +2233,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/ee10ce03-30a6-4c6c-90c3-55dc7a84a4e2.jpeg" alt="Digital Rotary Radio">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2147,6 +2247,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/ee859a33-5164-4d9b-942c-725183987c4b.jpeg" alt="Apex Films">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2160,6 +2261,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/f0a04b48-378f-48da-ad28-f0d386cb312d.jpeg" alt="Flip Card">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2173,6 +2275,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/f60edded-d69b-4a98-a8c1-a40c1434e24e.jpeg" alt="Milos">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2186,6 +2289,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/fac6ea6d-926d-40d7-bb0a-c9ca72bb9090.jpeg" alt="Baseform">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2199,6 +2303,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/fb243575-6c69-41ba-b3dc-1b3deeee8b37.jpeg" alt="Digital Rotary Radio">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2212,6 +2317,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/0399762e-fbf4-4a61-8072-c70245f65a35.jpeg" alt="Apex Films">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
@@ -2225,6 +2331,7 @@
                 
                 <div class="resource-card">
                     <div class="resource-preview">
+                        <img src="image/051ed961-8594-40d9-80ba-3e4ddbf4a090.jpeg" alt="Flip Card">
                         <div class="resource-card-overlay"></div>
                         <button class="resource-view-btn">View Resource</button>
                     </div>
