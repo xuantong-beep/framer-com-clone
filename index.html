@@ -202,6 +202,10 @@
             object-position: 50% 25%;
             opacity: 1;
         }
+        
+        .card .card-bg img.img-adjust-face-down {
+            object-position: 50% 35%;
+        }
 
         .card .card-content {
             position: relative;
@@ -469,7 +473,7 @@
         .testimonial-card {
             background-color: #1a1a1a;
             border-radius: 16px;
-            padding: 40px;
+            padding: 0;
             width: 1000px;
             height: 450px;
             flex-shrink: 0;
@@ -477,6 +481,7 @@
             transform: scale(1);
             transition: transform 0.3s ease, opacity 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
         
         .testimonial-card::before {
@@ -486,11 +491,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 16px;
             pointer-events: none;
             transition: opacity 0.3s ease;
             opacity: 1;
+            z-index: 1;
         }
         
         .testimonial-card.active::before {
@@ -500,6 +506,21 @@
         .testimonial-card.active {
             transform: scale(1.08);
             border: 1px solid #1A1A1A;
+        }
+        
+        .testimonial-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 15%;
+            display: block;
+        }
+        
+        .testimonial-card img.img-adjust-face-down {
+            object-position: 50% 25%;
         }
         
         .testimonial-quote {
@@ -614,7 +635,7 @@
             background-color: #1a1a1a;
             border: 1px solid #333333;
             border-radius: 16px;
-            padding: 0;
+            padding: 40px;
             min-height: 200px;
             position: relative;
             overflow: hidden;
@@ -627,9 +648,13 @@
             align-items: center;
             justify-content: center;
             min-height: 800px;
+            padding: 40px;
         }
 
         .scale-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1419,7 +1444,7 @@
             </div>
             <div class="card wide">
                 <div class="card-bg">
-                    <img src="1/27dd89d5-1d7f-4450-937b-d45ab1ea1f10.jpeg" alt="Design">
+                    <img src="1/ede76f56-899c-4e90-864b-033bc7eaa77b.jpeg" alt="Design" class="img-adjust-face-down">
                 </div>
             </div>
             <div class="card wide">
@@ -1598,30 +1623,39 @@
         
         <div class="testimonial-grid">
             <div class="testimonial-card" data-company="dummy1">
+                <img src="Powering/7a7df0e9-395b-4c45-acb4-325a54b90d7a.jpeg" alt="Testimonial" class="img-adjust-face-down">
             </div>
             
             <div class="testimonial-card" data-company="dummy2">
+                <img src="Powering/f9cf7186-4246-4c01-8902-558528a63bc4.jpeg" alt="Testimonial">
             </div>
             
-            <div class="testimonial-card" data-company="Perplexity">
+            <div class="testimonial-card active" data-company="Perplexity">
+                <img src="Powering/7f678960-68ce-4685-868d-3094d66c8e90.jpeg" alt="Testimonial">
             </div>
             
             <div class="testimonial-card" data-company="Flora">
+                <img src="Powering/e00aa4cc-c6e2-40ee-a910-74ee8a494c53.jpeg" alt="Testimonial">
             </div>
             
             <div class="testimonial-card" data-company="Biograph">
+                <img src="Powering/ee10ce03-30a6-4c6c-90c3-55dc7a84a4e2.jpeg" alt="Testimonial">
             </div>
             
             <div class="testimonial-card" data-company="Cradle">
+                <img src="Powering/d6b674f4-95c0-4db9-b765-1811e93e9b93.jpeg" alt="Testimonial">
             </div>
             
             <div class="testimonial-card" data-company="Miro">
+                <img src="Powering/7a7df0e9-395b-4c45-acb4-325a54b90d7a.jpeg" alt="Testimonial" class="img-adjust-face-down">
             </div>
             
             <div class="testimonial-card" data-company="dummy3">
+                <img src="Powering/7f678960-68ce-4685-868d-3094d66c8e90.jpeg" alt="Testimonial">
             </div>
             
             <div class="testimonial-card" data-company="dummy4">
+                <img src="Powering/d6b674f4-95c0-4db9-b765-1811e93e9b93.jpeg" alt="Testimonial">
             </div>
         </div>
         
