@@ -55,10 +55,88 @@
             text-decoration: none;
             transition: color 0.3s;
             font-size: 15px;
+            position: relative;
         }
         
         .nav-link:hover {
             color: white;
+        }
+        
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 8px;
+            display: none;
+            min-width: 360px;
+            border: 1px solid #333;
+            z-index: 1001;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+        }
+        
+        .nav-dropdown-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .nav-dropdown-item {
+            display: flex;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .nav-dropdown-item:hover {
+            background-color: #2a2a2a;
+        }
+        
+        .nav-dropdown-icon {
+            width: 36px;
+            height: 36px;
+            background: #2a2a2a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .nav-dropdown-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
+        }
+        
+        .nav-dropdown-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .nav-dropdown-title {
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .nav-dropdown-desc {
+            color: #888;
+            font-size: 12px;
         }
         
         .nav-right {
@@ -177,7 +255,7 @@
         
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(9, 1fr);
             grid-auto-rows: 300px;
             gap: 20px;
         }
@@ -235,7 +313,7 @@
         }
         
         section.card-section > div.card-grid > div.card:nth-child(4) {
-            height: 620px;
+            height: 300px;
         }
         
         .card h3 {
@@ -488,25 +566,7 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
             position: relative;
             overflow: hidden;
-        }
-        
-        .testimonial-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 16px;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            opacity: 1;
-            z-index: 1;
-        }
-        
-        .testimonial-card.active::before {
-            opacity: 0;
+            display: flex;
         }
         
         .testimonial-card.active {
@@ -514,15 +574,115 @@
             border: 1px solid #1A1A1A;
         }
         
-        .testimonial-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .testimonial-card-content {
+            flex: 0 0 50%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card-quote {
             width: 100%;
-            height: 100%;
+        }
+
+        .testimonial-card-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .testimonial-card-read-more {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .testimonial-card-read-more svg {
+            display: inline-block;
+            vertical-align: baseline;
+        }
+
+        .testimonial-card:hover .testimonial-card-read-more {
+            opacity: 1;
+        }
+        
+        .testimonial-card-quote {
+            font-size: 24px;
+            line-height: 1.4;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .testimonial-card-author {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+        }
+        
+        .testimonial-card-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #333333, #555555);
+        }
+        
+        .testimonial-card-info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .testimonial-card-info-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .testimonial-card-name {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* 特定元素样式调整 */
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(2) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(2) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more {
+            font-weight: 400;
+        }
+        
+        .testimonial-card-role {
+            color: #888888;
+            font-size: 14px;
+            line-height: 1;
+        }
+        
+        .testimonial-card-image {
+            flex: 1 1 50%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card-image img {
+            width: 100% !important;
+            height: 100% !important;
             object-fit: cover;
             object-position: 50% 15%;
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
         .testimonial-card img.img-adjust-face-down {
@@ -1022,6 +1182,13 @@
             background: white;
             color: black;
         }
+
+        /* 特定资源标签字体调整 */
+        section.resources-section > div.resources-header > div.resources-tabs > span.resources-tab:nth-child(1),
+        section.resources-section > div.resources-header > div.resources-tabs > span.resources-tab:nth-child(2),
+        section.resources-section > div.resources-header > div.resources-tabs > span.resources-tab:nth-child(3) {
+            font-family: Arial, sans-serif;
+        }
         
         .resources-grid-container {
             width: 100%;
@@ -1184,44 +1351,7 @@
             font-weight: 500;
         }
         
-        .testimonials-section {
-            padding: 80px 60px;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-        
-        .testimonial-card {
-            background: #1a1a1a;
-            border-radius: 16px;
-            padding: 40px;
-        }
-        
-        .testimonial-quote {
-            color: white;
-            font-size: 20px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .testimonial-name {
-            color: white;
-            font-weight: 600;
-            font-size: 16px;
-        }
-        
-        .testimonial-role {
-            color: #888888;
-            font-size: 14px;
-        }
+
         
         .footer {
             padding: 60px 60px;
@@ -1289,8 +1419,7 @@
             .extensions-section,
             .scale-section,
             .testimonial-section,
-            .logo-wall-section,
-            .testimonials-section {
+            .logo-wall-section {
                 padding: 60px 30px;
             }
             
@@ -1419,9 +1548,205 @@
             </div>
             
             <div class="nav-links">
-                <a href="#" class="nav-link">Product</a>
-                <a href="#" class="nav-link">Teams</a>
-                <a href="#" class="nav-link">Resources</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Product</a>
+                    <div class="nav-dropdown-menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">AI</div>
+                                    <div class="nav-dropdown-desc">Set your ideas free</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 11H19M9 16H19M5 11H5.01M5 16H5.01M5 6H5.01M19 6H9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Publish</div>
+                                    <div class="nav-dropdown-desc">Launch instantly</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4 4H20V20H4V4Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 9H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 20V9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Design</div>
+                                    <div class="nav-dropdown-desc">Create with ease</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="11" cy="11" r="8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M21 21L16.65 16.65" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">SEO</div>
+                                    <div class="nav-dropdown-desc">Powerful SEO</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <ellipse cx="12" cy="6" rx="8" ry="3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 6V12C4 14.5 7 17 12 17C17 17 20 14.5 20 12V6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M4 12C4 14.5 7 17 12 17C17 17 20 14.5 20 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">CMS</div>
+                                    <div class="nav-dropdown-desc">Manage content</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Performance</div>
+                                    <div class="nav-dropdown-desc">Built for speed</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M17 8L12 3L7 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 3V15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Collaborate</div>
+                                    <div class="nav-dropdown-desc">Build together</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M2 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07715 15.708 8 12C8.07715 8.29203 9.49872 4.73835 12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Hosting</div>
+                                    <div class="nav-dropdown-desc">Fast and secure</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Teams</a>
+                    <div class="nav-dropdown-menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Collaboration</div>
+                                    <div class="nav-dropdown-desc">Work together</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 8V12L15 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Analytics</div>
+                                    <div class="nav-dropdown-desc">Track success</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Resources</a>
+                    <div class="nav-dropdown-menu">
+                        <div class="nav-dropdown-grid">
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Templates</div>
+                                    <div class="nav-dropdown-desc">Start fast</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M12 15V23" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M8 23H16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Plugins</div>
+                                    <div class="nav-dropdown-desc">Extend your site</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 2V8H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 13H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 17H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M10 9H8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Documentation</div>
+                                    <div class="nav-dropdown-desc">Learn more</div>
+                                </div>
+                            </a>
+                            <a href="#" class="nav-dropdown-item">
+                                <div class="nav-dropdown-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 11.5C20.8396 8.51577 19.2278 5.83548 16.6577 4.08066C14.0876 2.32584 10.8588 1.64417 7.76284 2.1911C4.66688 2.73804 2.02485 4.46004 0.480615 6.95631C-1.06362 9.45258 -0.643438 12.3738 0.825241 14.9238C1.36638 15.8632 1.47042 16.9762 1.60879 18.0697C1.74715 19.1633 1.91984 20.2371 2 21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7 9H17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M7 13H13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="nav-dropdown-content">
+                                    <div class="nav-dropdown-title">Blog</div>
+                                    <div class="nav-dropdown-desc">Latest news</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <a href="#" class="nav-link">Pricing</a>
                 <a href="#" class="nav-link">Templates</a>
             </div>
@@ -1444,7 +1769,7 @@
 
     <section class="card-section">
         <div class="card-grid">
-            <!-- 第一行（6个位置） -->
+            <!-- 第一行（9个位置） -->
             <div class="card narrow">
                 <div class="card-bg">
                     <img src="1/1cf7bd4b-ce12-4288-af97-64b3e58dbf24.jpeg" alt="AI">
@@ -1470,13 +1795,28 @@
                     <img src="1/708007e0-7c47-4f8e-8e6a-55cb311d39c4.jpeg" alt="Analytics">
                 </div>
             </div>
+            <div class="card narrow">
+                <div class="card-bg">
+                    <img src="1/2693c111-c590-418b-9e4b-74e3c47a54a0.jpeg" alt="Feature 1">
+                </div>
+            </div>
+            <div class="card wide">
+                <div class="card-bg">
+                    <img src="1/27dd89d5-1d7f-4450-937b-d45ab1ea1f10.jpeg" alt="Feature 2">
+                </div>
+            </div>
+            <div class="card narrow">
+                <div class="card-bg">
+                    <img src="1/c2e0cb95-2b2f-4926-9a21-f5dfd1f81e3b.jpeg" alt="Feature 3">
+                </div>
+            </div>
             <div class="card wide tall">
                 <div class="card-bg">
                     <img src="1/a7e331ee-fb44-4901-8b8d-18920adfd278.jpeg" alt="Hosting">
                 </div>
             </div> <!-- 占2行 -->
             
-            <!-- 第二行（5个位置，因为Hosting占了一个） -->
+            <!-- 第二行 -->
             <div class="card narrow">
                 <div class="card-bg">
                     <img src="1/ad346df7-f651-46c6-86ad-c60d5ba737aa.jpeg" alt="Performance">
@@ -1487,9 +1827,29 @@
                     <img src="1/fa7b60e7-b820-4713-a544-7cd3de3be297.jpeg" alt="Security">
                 </div>
             </div>
+            <div class="card narrow tall">
+                <div class="card-bg">
+                    <img src="image/8497057c-d596-4e6c-b850-ae86b8df4197.jpeg" alt="Feature Extra">
+                </div>
+            </div>
             <div class="card wide">
                 <div class="card-bg">
-                    <img src="1/b4a41dae-f3e4-4aca-9d4a-8a836a36d022.jpeg" alt="Version Control">
+                    <img src="image/61ce06d6-161e-4bc6-9333-8fa5f5a0b4d3.jpeg" alt="Version Control">
+                </div>
+            </div>
+            <div class="card narrow">
+                <div class="card-bg">
+                    <img src="1/cb08cee5-c4d8-42bf-ae14-86523baff5f5.jpeg" alt="Feature 4">
+                </div>
+            </div>
+            <div class="card wide">
+                <div class="card-bg">
+                    <img src="image/4608c3e6-49cd-4aa3-9005-941489119507.jpeg" alt="Feature 5">
+                </div>
+            </div>
+            <div class="card narrow">
+                <div class="card-bg">
+                    <img src="image/41fb60d1-28bd-42db-bf27-44ab53d13c1f.jpeg" alt="Feature 6">
                 </div>
             </div>
 
@@ -1630,40 +1990,180 @@
         <h2 class="testimonial-title">Powering ambitious<br>teams worldwide</h2>
         
         <div class="testimonial-grid">
-            <div class="testimonial-card" data-company="dummy1">
-                <img src="Powering/7a7df0e9-395b-4c45-acb4-325a54b90d7a.jpeg" alt="Testimonial" class="img-adjust-face-down">
-            </div>
-            
-            <div class="testimonial-card" data-company="dummy2">
-                <img src="Powering/f9cf7186-4246-4c01-8902-558528a63bc4.jpeg" alt="Testimonial">
-            </div>
-            
-            <div class="testimonial-card active" data-company="Perplexity">
-                <img src="Powering/7f678960-68ce-4685-868d-3094d66c8e90.jpeg" alt="Testimonial">
-            </div>
-            
-            <div class="testimonial-card" data-company="Flora">
-                <img src="Powering/e00aa4cc-c6e2-40ee-a910-74ee8a494c53.jpeg" alt="Testimonial">
-            </div>
-            
-            <div class="testimonial-card" data-company="Biograph">
-                <img src="Powering/ee10ce03-30a6-4c6c-90c3-55dc7a84a4e2.jpeg" alt="Testimonial">
-            </div>
-            
-            <div class="testimonial-card" data-company="Cradle">
-                <img src="Powering/d6b674f4-95c0-4db9-b765-1811e93e9b93.jpeg" alt="Testimonial">
-            </div>
-            
             <div class="testimonial-card" data-company="Miro">
-                <img src="Powering/7a7df0e9-395b-4c45-acb4-325a54b90d7a.jpeg" alt="Testimonial" class="img-adjust-face-down">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Radoslav Bali</span>
+                                <span class="testimonial-card-role">Design Lead at Miro</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/7a7df0e9-395b-4c45-acb4-325a54b90d7a.jpeg" alt="Testimonial" class="img-adjust-face-down">
+                </div>
             </div>
-            
-            <div class="testimonial-card" data-company="dummy3">
-                <img src="Powering/7f678960-68ce-4685-868d-3094d66c8e90.jpeg" alt="Testimonial">
+            <div class="testimonial-card active" data-company="Perplexity">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Henry Modisett</span>
+                                <span class="testimonial-card-role">Head of Design at Perplexity</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/7f678960-68ce-4685-868d-3094d66c8e90.jpeg" alt="Testimonial">
+                </div>
             </div>
-            
-            <div class="testimonial-card" data-company="dummy4">
-                <img src="Powering/d6b674f4-95c0-4db9-b765-1811e93e9b93.jpeg" alt="Testimonial">
+            <div class="testimonial-card" data-company="Flora">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "At FLORA, we care about flow—how ideas move from imagination to interface. Framer gets that. It gives us the speed to iterate, the freedom to explore, and the power to execute."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Ethan Proia</span>
+                                <span class="testimonial-card-role">Head of Design at FLORA</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/e00aa4cc-c6e2-40ee-a910-74ee8a494c53.jpeg" alt="Testimonial">
+                </div>
+            </div>
+            <div class="testimonial-card" data-company="Biograph">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Team Member</span>
+                                <span class="testimonial-card-role">Design Lead at Biograph</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/ee10ce03-30a6-4c6c-90c3-55dc7a84a4e2.jpeg" alt="Testimonial">
+                </div>
+            </div>
+            <div class="testimonial-card" data-company="Cradle">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Team Member</span>
+                                <span class="testimonial-card-role">Design Lead at Cradle</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/d6b674f4-95c0-4db9-b765-1811e93e9b93.jpeg" alt="Testimonial">
+                </div>
+            </div>
+            <div class="testimonial-card" data-company="Miro">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Radoslav Bali</span>
+                                <span class="testimonial-card-role">Design Lead at Miro</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/7a7df0e9-395b-4c45-acb4-325a54b90d7a.jpeg" alt="Testimonial" class="img-adjust-face-down">
+                </div>
+            </div>
+            <div class="testimonial-card" data-company="Perplexity">
+                <div class="testimonial-card-content">
+                    <p class="testimonial-card-quote">
+                        "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
+                    </p>
+                    <div class="testimonial-card-bottom">
+                        <div class="testimonial-card-author">
+                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-info">
+                                <span class="testimonial-card-name">Henry Modisett</span>
+                                <span class="testimonial-card-role">Head of Design at Perplexity</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-card-read-more">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 4L10 8L6 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card-image">
+                    <img src="Powering/7f678960-68ce-4685-868d-3094d66c8e90.jpeg" alt="Testimonial">
+                </div>
             </div>
         </div>
         
@@ -2401,28 +2901,7 @@
         </div>
     </section>
 
-    <section class="testimonials-section">
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
-                </p>
-                <div class="testimonial-author">
-                    <span class="testimonial-name">Henry Modisett</span>
-                    <span class="testimonial-role">Head of Design at Perplexity</span>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-quote">
-                    "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
-                </p>
-                <div class="testimonial-author">
-                    <span class="testimonial-name">Radoslav Bali</span>
-                    <span class="testimonial-role">Design Lead at Miro</span>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <footer class="footer">
         <div class="footer-content">
@@ -2485,46 +2964,88 @@
             let currentIndex = 0;
             
             const switchToCompany = function(index) {
-                if (index < 0) index = navLinks.length - 1;
-                if (index >= navLinks.length) index = 0;
+                const totalCount = navLinks.length;
+                let newIndex = index;
                 
-                currentIndex = index;
-                const companyName = navLinks[index].textContent.trim();
+                if (newIndex < 0) {
+                    newIndex = totalCount - 1;
+                } else if (newIndex >= totalCount) {
+                    newIndex = 0;
+                }
+                
+                const companyName = navLinks[newIndex].textContent.trim();
                 
                 document.querySelectorAll('.testimonial-nav-link').forEach(l => {
                     l.classList.remove('active');
                 });
-                navLinks[index].classList.add('active');
+                navLinks[newIndex].classList.add('active');
                 
                 document.querySelectorAll('.testimonial-card').forEach(card => {
                     card.classList.remove('active');
                 });
                 
-                const targetCard = document.querySelector(`.testimonial-card[data-company="${companyName}"]`);
+                let targetCard, targetIndex;
                 
-                if (targetCard && testimonialGrid) {
+                if (newIndex === 0) {
+                    targetIndex = 1;
+                } else if (newIndex === 1) {
+                    targetIndex = 2;
+                } else if (newIndex === 2) {
+                    targetIndex = 3;
+                } else if (newIndex === 3) {
+                    targetIndex = 4;
+                } else if (newIndex === 4) {
+                    targetIndex = 5;
+                }
+                
+                targetCard = testimonialGrid.children[targetIndex];
+                
+                if (targetCard) {
                     targetCard.classList.add('active');
+                    
                     const gridWidth = testimonialGrid.offsetWidth;
                     const cardWidth = targetCard.offsetWidth;
                     const cardLeft = targetCard.offsetLeft;
                     const centerOffset = cardLeft - (gridWidth / 2) + (cardWidth / 2);
+                    
                     testimonialGrid.scrollTo({
                         left: centerOffset,
                         behavior: 'smooth'
                     });
                 }
+                
+                currentIndex = newIndex;
             };
             
-            const initialCard = document.querySelector('.testimonial-card[data-company="Perplexity"]');
+            const initialCard = testimonialGrid.children[1];
             
             if (testimonialGrid && initialCard) {
+                initialCard.classList.add('active');
+                
                 const gridWidth = testimonialGrid.offsetWidth;
                 const cardWidth = initialCard.offsetWidth;
                 const cardLeft = initialCard.offsetLeft;
                 const centerOffset = cardLeft - (gridWidth / 2) + (cardWidth / 2);
                 testimonialGrid.scrollLeft = centerOffset;
-                initialCard.classList.add('active');
             }
+            
+            currentIndex = 0;
+            
+            testimonialGrid.addEventListener('scroll', function() {
+                const scrollLeft = testimonialGrid.scrollLeft;
+                const scrollWidth = testimonialGrid.scrollWidth;
+                const clientWidth = testimonialGrid.clientWidth;
+                
+                if (scrollLeft >= scrollWidth - clientWidth - 100) {
+                    testimonialGrid.style.scrollBehavior = 'auto';
+                    testimonialGrid.scrollLeft = 1070;
+                    testimonialGrid.style.scrollBehavior = 'smooth';
+                } else if (scrollLeft <= 100) {
+                    testimonialGrid.style.scrollBehavior = 'auto';
+                    testimonialGrid.scrollLeft = scrollWidth - clientWidth - 1070;
+                    testimonialGrid.style.scrollBehavior = 'smooth';
+                }
+            });
             
             document.querySelectorAll('.testimonial-nav-link').forEach((link, index) => {
                 link.addEventListener('click', function(e) {
