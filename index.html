@@ -56,6 +56,7 @@
             transition: color 0.3s;
             font-size: 15px;
             position: relative;
+            font-weight: 300;
         }
         
         .nav-link:hover {
@@ -801,56 +802,85 @@
             background-color: #1a1a1a;
             border: 1px solid #333333;
             border-radius: 16px;
-            padding: 40px;
-            min-height: 200px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
         }
 
         .scale-card.large {
             grid-column: span 1;
             grid-row: span 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 800px;
-            padding: 40px;
+            height: 1000px;
+            min-height: 1000px;
         }
 
-        .scale-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .scale-card:not(.large) {
+            height: 485px;
+            min-height: 485px;
+        }
+
+        .scale-card-text {
+            flex-shrink: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .scale-card.large .scale-card-text {
+            flex: 0 0 20%;
+        }
+
+        .scale-card-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scale-card.large .scale-card-image {
+            flex: 0 0 80%;
+        }
+
+        .scale-card:not(.large) .scale-card-image {
+            flex-grow: 1;
+        }
+
+        .scale-card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: 50% 25%;
             display: block;
         }
+
+        .scale-card-image img.img-adjust-up {
+            object-position: 50% 30%;
+        }
         
         .scale-card-title {
             color: white;
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 400;
             margin-bottom: 12px;
         }
         
         .scale-card-desc {
             color: #888888;
-            font-size: 16px;
+            font-size: 20px;
             line-height: 1.6;
             margin-bottom: 24px;
         }
         
         .scale-card-link {
-            color: #d2d0d0;
-            font-size: 16px;
+            color: #888888;
+            font-size: 20px;
             cursor: pointer;
             transition: color 0.3s ease;
         }
         
         .scale-card-link:hover {
-            color: #7A7A7A;
+            color: #555555;
         }
         
         .scale-card-visual {
@@ -1795,14 +1825,14 @@
                     <img src="1/708007e0-7c47-4f8e-8e6a-55cb311d39c4.jpeg" alt="Analytics">
                 </div>
             </div>
-            <div class="card narrow">
+            <div class="card narrow tall">
                 <div class="card-bg">
-                    <img src="1/2693c111-c590-418b-9e4b-74e3c47a54a0.jpeg" alt="Feature 1">
+                    <img src="image/5f494f53-852b-48ed-9fda-9dbc8f2463e5.jpeg" alt="Feature 1">
                 </div>
             </div>
             <div class="card wide">
                 <div class="card-bg">
-                    <img src="1/27dd89d5-1d7f-4450-937b-d45ab1ea1f10.jpeg" alt="Feature 2">
+                    <img src="image/0d6462b9-3f25-4ec8-a90e-624f4553435d.jpeg" alt="Feature 2">
                 </div>
             </div>
             <div class="card narrow">
@@ -1827,7 +1857,7 @@
                     <img src="1/fa7b60e7-b820-4713-a544-7cd3de3be297.jpeg" alt="Security">
                 </div>
             </div>
-            <div class="card narrow tall">
+            <div class="card narrow">
                 <div class="card-bg">
                     <img src="image/8497057c-d596-4e6c-b850-ae86b8df4197.jpeg" alt="Feature Extra">
                 </div>
@@ -1972,15 +2002,36 @@
         
         <div class="scale-grid">
             <div class="scale-card large">
-                <img src="scale/c47b5bdb-f01b-4ed6-abc5-84a4aeea7d4c.jpeg" alt="Scale">
+                <div class="scale-card-text">
+                    <h3 class="scale-card-title">Analytics & insights</h3>
+                    <p class="scale-card-desc">Track traffic, measure performance, and monitor conversions.</p>
+                    <span class="scale-card-link">Learn more &gt;</span>
+                </div>
+                <div class="scale-card-image">
+                    <img src="scale/c47b5bdb-f01b-4ed6-abc5-84a4aeea7d4c.jpeg" alt="Scale">
+                </div>
             </div>
             
             <div class="scale-card">
-                <img src="scale/b1c0876c-bc8d-47bc-bcd8-f46f89aa5ab3.jpeg" alt="Scale">
+                <div class="scale-card-text">
+                    <h3 class="scale-card-title">Feature</h3>
+                    <p class="scale-card-desc">Scale your workflow with integrated tools.</p>
+                    <span class="scale-card-link">Learn more &gt;</span>
+                </div>
+                <div class="scale-card-image">
+                    <img src="scale/b1c0876c-bc8d-47bc-bcd8-f46f89aa5ab3.jpeg" alt="Scale">
+                </div>
             </div>
             
             <div class="scale-card">
-                <img src="scale/f9ec3f5d-aa41-4406-b060-54757a3fcde1.jpeg" alt="Scale">
+                <div class="scale-card-text">
+                    <h3 class="scale-card-title">Feature</h3>
+                    <p class="scale-card-desc">Scale your workflow with integrated tools.</p>
+                    <span class="scale-card-link">Learn more &gt;</span>
+                </div>
+                <div class="scale-card-image">
+                    <img src="scale/f9ec3f5d-aa41-4406-b060-54757a3fcde1.jpeg" alt="Scale" class="img-adjust-up">
+                </div>
             </div>
         </div>
         <div class="scale-section-overlay"></div>
