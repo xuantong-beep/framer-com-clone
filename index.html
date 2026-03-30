@@ -31,6 +31,15 @@
             backdrop-filter: blur(10px);
         }
         
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: calc((100% - 1200px) / 2);
+        }
+        
         .logo {
             width: 32px;
             height: 32px;
@@ -1402,23 +1411,25 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0H11L23 12H11V16H20V14H11V20H18V18H11V32H0V0Z" fill="#FFFFFF"/>
-            </svg>
-        </div>
-        
-        <div class="nav-links">
-            <a href="#" class="nav-link">Product</a>
-            <a href="#" class="nav-link">Teams</a>
-            <a href="#" class="nav-link">Resources</a>
-            <a href="#" class="nav-link">Pricing</a>
-            <a href="#" class="nav-link">Templates</a>
-        </div>
-        
-        <div class="nav-right">
-            <a href="#" class="log-in">Log in</a>
-            <a href="#" class="sign-up-btn">Sign up</a>
+        <div class="navbar-content">
+            <div class="logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H11L23 12H11V16H20V14H11V20H18V18H11V32H0V0Z" fill="#FFFFFF"/>
+                </svg>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#" class="nav-link">Product</a>
+                <a href="#" class="nav-link">Teams</a>
+                <a href="#" class="nav-link">Resources</a>
+                <a href="#" class="nav-link">Pricing</a>
+                <a href="#" class="nav-link">Templates</a>
+            </div>
+            
+            <div class="nav-right">
+                <a href="#" class="log-in">Log in</a>
+                <a href="#" class="sign-up-btn">Sign up</a>
+            </div>
         </div>
     </nav>
 
