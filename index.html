@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Framer Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,14 +24,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 60px;
+            padding: 0 60px;
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            height: 60px;
         }
         
         .navbar-content {
@@ -41,8 +46,8 @@
         }
         
         .logo {
-            width: 32px;
-            height: 32px;
+            width: 25px;
+            height: 25px;
         }
         
         .nav-links {
@@ -73,14 +78,25 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            background: #1a1a1a;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 16px;
-            margin-top: 8px;
+            margin-top: 15px;
             display: none;
             min-width: 360px;
-            border: 1px solid #333;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1001;
+        }
+
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
         }
         
         .nav-dropdown:hover .nav-dropdown-menu {
@@ -103,7 +119,25 @@
         }
         
         .nav-dropdown-item:hover {
-            background-color: #2a2a2a;
+        }
+        
+        .nav-dropdown-item:hover .nav-dropdown-title {
+            color: white;
+        }
+        
+        .nav-dropdown-item:hover .nav-dropdown-desc {
+            color: white;
+        }
+        
+        .nav-dropdown-item:hover .nav-dropdown-icon {
+            background: white;
+        }
+        
+        .nav-dropdown-item:hover .nav-dropdown-icon svg path,
+        .nav-dropdown-item:hover .nav-dropdown-icon svg circle,
+        .nav-dropdown-item:hover .nav-dropdown-icon svg ellipse {
+            fill: black !important;
+            stroke: black !important;
         }
         
         .nav-dropdown-icon {
@@ -115,12 +149,20 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            transition: background-color 0.2s ease;
+        }
+        
+        .nav-dropdown-icon svg path,
+        .nav-dropdown-icon svg circle,
+        .nav-dropdown-icon svg ellipse {
+            fill: white !important;
+            stroke: white !important;
+            transition: fill 0.2s ease, stroke 0.2s ease;
         }
         
         .nav-dropdown-icon svg {
             width: 18px;
             height: 18px;
-            fill: white;
         }
         
         .nav-dropdown-content {
@@ -130,37 +172,39 @@
         }
         
         .nav-dropdown-title {
-            color: white;
+            color: #999;
             font-size: 14px;
             font-weight: 400;
+            transition: color 0.2s ease;
         }
         
         .nav-dropdown-desc {
             color: #888;
             font-size: 12px;
+            transition: color 0.2s ease;
         }
         
         .nav-right {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             align-items: center;
         }
         
         .log-in {
-            color: white;
+            color: #999999;
             text-decoration: none;
             font-size: 15px;
             transition: color 0.3s;
         }
         
         .log-in:hover {
-            color: #999999;
+            color: white;
         }
         
         .sign-up-btn {
             background: white;
             color: black;
-            padding: 8px 15px;
+            padding: 5px 10px;
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 500;
@@ -187,19 +231,14 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 24px;
-            position: relative;
-            display: inline-block;
+            font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            letter-spacing: 0px;
         }
         
-        .letter-wrap {
-            display: block;
-        }
-        
-        .letter {
+        .hero-title .letter {
             display: inline-block;
-            position: relative;
-            transition: transform 0.15s ease-out;
-            will-change: transform;
+            font-variation-settings: 'wght' 400, 'opsz' 9;
+            transition: font-variation-settings 0.3s ease-out;
         }
         
         .hero-subtitle {
@@ -1864,13 +1903,8 @@
 
     <section class="hero">
         <h1 class="hero-title" id="hero-title">
-            <span class="letter-wrap" data-text="Build better">
-                <span class="letter" data-char="B">B</span><span class="letter" data-char="u">u</span><span class="letter" data-char="i">i</span><span class="letter" data-char="l">l</span><span class="letter" data-char="d">d</span><span class="letter" data-char=" ">&nbsp;</span><span class="letter" data-char="b">b</span><span class="letter" data-char="e">e</span><span class="letter" data-char="t">t</span><span class="letter" data-char="t">t</span><span class="letter" data-char="e">e</span><span class="letter" data-char="r">r</span>
-            </span>
-            <br>
-            <span class="letter-wrap" data-text="sites, faster">
-                <span class="letter" data-char="s">s</span><span class="letter" data-char="i">i</span><span class="letter" data-char="t">t</span><span class="letter" data-char="e">e</span><span class="letter" data-char="s">s</span><span class="letter" data-char=",">,</span><span class="letter" data-char=" ">&nbsp;</span><span class="letter" data-char="f">f</span><span class="letter" data-char="a">a</span><span class="letter" data-char="s">s</span><span class="letter" data-char="t">t</span><span class="letter" data-char="e">e</span><span class="letter" data-char="r">r</span>
-            </span>
+            <span class="letter">B</span><span class="letter">u</span><span class="letter">i</span><span class="letter">l</span><span class="letter">d</span><span class="letter">&nbsp;</span><span class="letter">b</span><span class="letter">e</span><span class="letter">t</span><span class="letter">t</span><span class="letter">e</span><span class="letter">r</span><br>
+            <span class="letter">s</span><span class="letter">i</span><span class="letter">t</span><span class="letter">e</span><span class="letter">s</span><span class="letter">,</span><span class="letter">&nbsp;</span><span class="letter">f</span><span class="letter">a</span><span class="letter">s</span><span class="letter">t</span><span class="letter">e</span><span class="letter">r</span>
         </h1>
         <p class="hero-subtitle">Framer is the site builder trusted by leading startups and Fortune 500 companies. Build fast and scale more easily with an integrated CMS, analytics, localization, and SEO.</p>
         <div class="hero-buttons">
@@ -3243,41 +3277,66 @@
                 const letters = heroTitle.querySelectorAll('.letter');
                 let mouseX = -1000;
                 let mouseY = -1000;
+                let lastMouseX = null;
+                let lastMouseY = null;
                 
                 const config = {
-                    radius: 150,
-                    maxOffset: 20,
-                    maxRotation: 15,
-                    maxScale: 1.2,
-                    ease: 0.15
+                    radius: 140,
+                    fromWght: 400,
+                    toWght: 1000,
+                    fromOpsz: 9,
+                    toOpsz: 40,
+                    easing: 0.1
                 };
                 
-                const updateLetterTransforms = function() {
-                    letters.forEach(letter => {
+                const letterStates = Array.from(letters).map(() => ({
+                    currentWght: config.fromWght,
+                    currentOpsz: config.fromOpsz
+                }));
+                
+                const calculateFalloff = function(distance) {
+                    const norm = Math.min(Math.max(1 - distance / config.radius, 0), 1);
+                    return norm;
+                };
+                
+                const updateLetters = function() {
+                    if (lastMouseX === mouseX && lastMouseY === mouseY) {
+                        requestAnimationFrame(updateLetters);
+                        return;
+                    }
+                    lastMouseX = mouseX;
+                    lastMouseY = mouseY;
+                    
+                    const containerRect = heroTitle.getBoundingClientRect();
+                    
+                    letters.forEach((letter, index) => {
                         const rect = letter.getBoundingClientRect();
-                        const letterCenterX = rect.left + rect.width / 2;
-                        const letterCenterY = rect.top + rect.height / 2;
+                        const letterCenterX = rect.left + rect.width / 2 - containerRect.left;
+                        const letterCenterY = rect.top + rect.height / 2 - containerRect.top;
                         
-                        const dx = mouseX - letterCenterX;
-                        const dy = mouseY - letterCenterY;
+                        const dx = mouseX - containerRect.left - letterCenterX;
+                        const dy = mouseY - containerRect.top - letterCenterY;
                         const distance = Math.sqrt(dx * dx + dy * dy);
                         
+                        let targetWght, targetOpsz;
+                        
                         if (distance < config.radius) {
-                            const influence = 1 - (distance / config.radius);
-                            const angle = Math.atan2(dy, dx);
-                            
-                            const offsetX = -Math.cos(angle) * influence * config.maxOffset;
-                            const offsetY = -Math.sin(angle) * influence * config.maxOffset;
-                            const rotation = influence * config.maxRotation * (Math.random() > 0.5 ? 1 : -1);
-                            const scale = 1 + influence * (config.maxScale - 1);
-                            
-                            letter.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotation}deg) scale(${scale})`;
+                            const influence = calculateFalloff(distance);
+                            targetWght = config.fromWght + (config.toWght - config.fromWght) * influence;
+                            targetOpsz = config.fromOpsz + (config.toOpsz - config.fromOpsz) * influence;
                         } else {
-                            letter.style.transform = 'translate(0, 0) rotate(0deg) scale(1)';
+                            targetWght = config.fromWght;
+                            targetOpsz = config.fromOpsz;
                         }
+                        
+                        const state = letterStates[index];
+                        state.currentWght += (targetWght - state.currentWght) * config.easing;
+                        state.currentOpsz += (targetOpsz - state.currentOpsz) * config.easing;
+                        
+                        letter.style.fontVariationSettings = `'wght' ${state.currentWght}, 'opsz' ${state.currentOpsz}`;
                     });
                     
-                    requestAnimationFrame(updateLetterTransforms);
+                    requestAnimationFrame(updateLetters);
                 };
                 
                 const handleMove = function(clientX, clientY) {
@@ -3300,7 +3359,7 @@
                     mouseY = -1000;
                 });
                 
-                updateLetterTransforms();
+                updateLetters();
             }
         });
     </script>
