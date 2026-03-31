@@ -421,7 +421,7 @@
         }
         
         .feature-link:hover {
-            color: #7A7A7A;
+            color: #666666;
         }
         
         .feature-item:not(:first-child)::before {
@@ -965,13 +965,17 @@
         .reveal-link {
             position: absolute;
             color: white;
-            text-decoration: underline;
+            text-decoration: none;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, color 0.3s ease;
         }
         
         .word-grid:hover .reveal-link {
             opacity: 1;
+        }
+        
+        .reveal-link:hover {
+            color: #666666;
         }
         
         .experts-section {
