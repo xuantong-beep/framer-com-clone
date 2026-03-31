@@ -575,6 +575,22 @@
             border: 1px solid #1A1A1A;
         }
         
+        .testimonial-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .testimonial-card.active .testimonial-card-overlay {
+            opacity: 0;
+        }
+        
         .testimonial-card-content {
             flex: 0 0 50%;
             padding: 40px;
@@ -582,7 +598,8 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            background-color: #000000;
         }
 
         .testimonial-card-quote {
@@ -634,6 +651,15 @@
             height: 40px;
             border-radius: 50%;
             background: linear-gradient(135deg, #333333, #555555);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .testimonial-card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
         
         .testimonial-card-info {
@@ -657,7 +683,19 @@
 
         /* 特定元素样式调整 */
         section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(2) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
-        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(2) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more {
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(2) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(3) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(3) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(4) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(4) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(5) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(5) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(6) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(6) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(7) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(7) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(8) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-author > div.testimonial-card-info > span.testimonial-card-name,
+        section.testimonial-section > div.testimonial-grid > div.testimonial-card:nth-child(8) > div.testimonial-card-content > div.testimonial-card-bottom > div.testimonial-card-read-more {
             font-weight: 400;
         }
         
@@ -799,7 +837,6 @@
         }
         
         .scale-card {
-            background-color: #1a1a1a;
             border: 1px solid #333333;
             border-radius: 16px;
             position: relative;
@@ -860,21 +897,21 @@
         
         .scale-card-title {
             color: white;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 400;
-            margin-bottom: 12px;
+            margin-bottom: 5px;
         }
         
         .scale-card-desc {
             color: #888888;
-            font-size: 20px;
+            font-size: 18px;
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 15px;
         }
         
         .scale-card-link {
             color: #888888;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             transition: color 0.3s ease;
         }
@@ -1109,6 +1146,15 @@
             height: 32px;
             background: linear-gradient(135deg, #333333, #555555);
             border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .expert-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
         
         .expert-details {
@@ -2042,13 +2088,14 @@
         
         <div class="testimonial-grid">
             <div class="testimonial-card" data-company="Miro">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/09b22d0e-cbfc-4a60-8e2c-10f143a3ed5d.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Radoslav Bali</span>
                                 <span class="testimonial-card-role">Design Lead at Miro</span>
@@ -2067,13 +2114,14 @@
                 </div>
             </div>
             <div class="testimonial-card active" data-company="Perplexity">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/3e627ab4-eda4-4127-8962-2a05a3047257.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Henry Modisett</span>
                                 <span class="testimonial-card-role">Head of Design at Perplexity</span>
@@ -2092,13 +2140,14 @@
                 </div>
             </div>
             <div class="testimonial-card" data-company="Flora">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "At FLORA, we care about flow—how ideas move from imagination to interface. Framer gets that. It gives us the speed to iterate, the freedom to explore, and the power to execute."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/b3d74185-3da8-4703-9bbc-570787a8d451.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Ethan Proia</span>
                                 <span class="testimonial-card-role">Head of Design at FLORA</span>
@@ -2117,13 +2166,14 @@
                 </div>
             </div>
             <div class="testimonial-card" data-company="Biograph">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/c91d841f-c2b0-434d-97d9-b298e824c067.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Team Member</span>
                                 <span class="testimonial-card-role">Design Lead at Biograph</span>
@@ -2142,13 +2192,14 @@
                 </div>
             </div>
             <div class="testimonial-card" data-company="Cradle">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/09b22d0e-cbfc-4a60-8e2c-10f143a3ed5d.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Team Member</span>
                                 <span class="testimonial-card-role">Design Lead at Cradle</span>
@@ -2167,13 +2218,14 @@
                 </div>
             </div>
             <div class="testimonial-card" data-company="Miro">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "Framer allowed us to ship high-performing, beautifully designed pages at record speed, all while keeping design control in-house."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/3e627ab4-eda4-4127-8962-2a05a3047257.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Radoslav Bali</span>
                                 <span class="testimonial-card-role">Design Lead at Miro</span>
@@ -2192,13 +2244,14 @@
                 </div>
             </div>
             <div class="testimonial-card" data-company="Perplexity">
+                <div class="testimonial-card-overlay"></div>
                 <div class="testimonial-card-content">
                     <p class="testimonial-card-quote">
                         "Framer gives us everything we need to move fast. We don't wait on dev. We don't compromise on design."
                     </p>
                     <div class="testimonial-card-bottom">
                         <div class="testimonial-card-author">
-                            <div class="testimonial-card-avatar"></div>
+                            <div class="testimonial-card-avatar"><img src="head/b3d74185-3da8-4703-9bbc-570787a8d451.jpeg" alt="Avatar"></div>
                             <div class="testimonial-card-info">
                                 <span class="testimonial-card-name">Henry Modisett</span>
                                 <span class="testimonial-card-role">Head of Design at Perplexity</span>
@@ -2249,12 +2302,12 @@
             <div class="experts-cards">
                 <div class="expert-card">
                     <div class="expert-card-preview">
-                        <img src="image/0399762e-fbf4-4a61-8072-c70245f65a35.jpeg" alt="Atomic Studio">
+                        <img src="image/8497057c-d596-4e6c-b850-ae86b8df4197.jpeg" alt="Atomic Studio" class="img-adjust-face-down">
                         <div class="expert-card-overlay"></div>
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/09b22d0e-cbfc-4a60-8e2c-10f143a3ed5d.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Atomic Studio</div>
                             <div class="expert-location">Germany</div>
@@ -2269,7 +2322,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/3e627ab4-eda4-4127-8962-2a05a3047257.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Wevlab</div>
                             <div class="expert-location">United States</div>
@@ -2284,7 +2337,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/b3d74185-3da8-4703-9bbc-570787a8d451.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Adenas Fxs</div>
                             <div class="expert-location">United States</div>
@@ -2299,7 +2352,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/c91d841f-c2b0-434d-97d9-b298e824c067.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Diverse Studio</div>
                             <div class="expert-location">United States</div>
@@ -2314,7 +2367,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/09b22d0e-cbfc-4a60-8e2c-10f143a3ed5d.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Studio 5</div>
                             <div class="expert-location">United Kingdom</div>
@@ -2329,7 +2382,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/3e627ab4-eda4-4127-8962-2a05a3047257.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Studio 6</div>
                             <div class="expert-location">Canada</div>
@@ -2344,7 +2397,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/b3d74185-3da8-4703-9bbc-570787a8d451.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Studio 7</div>
                             <div class="expert-location">Australia</div>
@@ -2359,7 +2412,7 @@
                         <button class="expert-view-btn">View Expert</button>
                     </div>
                     <div class="expert-card-info">
-                        <div class="expert-avatar"></div>
+                        <div class="expert-avatar"><img src="head/09b22d0e-cbfc-4a60-8e2c-10f143a3ed5d.jpeg" alt="Avatar"></div>
                         <div class="expert-details">
                             <div class="expert-name">Studio 8</div>
                             <div class="expert-location">Japan</div>
