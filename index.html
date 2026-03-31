@@ -187,6 +187,19 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .letter-wrap {
+            display: block;
+        }
+        
+        .letter {
+            display: inline-block;
+            position: relative;
+            transition: transform 0.15s ease-out;
+            will-change: transform;
         }
         
         .hero-subtitle {
@@ -1850,7 +1863,15 @@
     </nav>
 
     <section class="hero">
-        <h1 class="hero-title">Build better<br>sites, faster</h1>
+        <h1 class="hero-title" id="hero-title">
+            <span class="letter-wrap" data-text="Build better">
+                <span class="letter" data-char="B">B</span><span class="letter" data-char="u">u</span><span class="letter" data-char="i">i</span><span class="letter" data-char="l">l</span><span class="letter" data-char="d">d</span><span class="letter" data-char=" ">&nbsp;</span><span class="letter" data-char="b">b</span><span class="letter" data-char="e">e</span><span class="letter" data-char="t">t</span><span class="letter" data-char="t">t</span><span class="letter" data-char="e">e</span><span class="letter" data-char="r">r</span>
+            </span>
+            <br>
+            <span class="letter-wrap" data-text="sites, faster">
+                <span class="letter" data-char="s">s</span><span class="letter" data-char="i">i</span><span class="letter" data-char="t">t</span><span class="letter" data-char="e">e</span><span class="letter" data-char="s">s</span><span class="letter" data-char=",">,</span><span class="letter" data-char=" ">&nbsp;</span><span class="letter" data-char="f">f</span><span class="letter" data-char="a">a</span><span class="letter" data-char="s">s</span><span class="letter" data-char="t">t</span><span class="letter" data-char="e">e</span><span class="letter" data-char="r">r</span>
+            </span>
+        </h1>
         <p class="hero-subtitle">Framer is the site builder trusted by leading startups and Fortune 500 companies. Build fast and scale more easily with an integrated CMS, analytics, localization, and SEO.</p>
         <div class="hero-buttons">
             <button class="btn-primary">Start for free</button>
@@ -3216,6 +3237,71 @@
                     scrollExperts(index);
                 });
             });
+            
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                const letters = heroTitle.querySelectorAll('.letter');
+                let mouseX = -1000;
+                let mouseY = -1000;
+                
+                const config = {
+                    radius: 150,
+                    maxOffset: 20,
+                    maxRotation: 15,
+                    maxScale: 1.2,
+                    ease: 0.15
+                };
+                
+                const updateLetterTransforms = function() {
+                    letters.forEach(letter => {
+                        const rect = letter.getBoundingClientRect();
+                        const letterCenterX = rect.left + rect.width / 2;
+                        const letterCenterY = rect.top + rect.height / 2;
+                        
+                        const dx = mouseX - letterCenterX;
+                        const dy = mouseY - letterCenterY;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < config.radius) {
+                            const influence = 1 - (distance / config.radius);
+                            const angle = Math.atan2(dy, dx);
+                            
+                            const offsetX = -Math.cos(angle) * influence * config.maxOffset;
+                            const offsetY = -Math.sin(angle) * influence * config.maxOffset;
+                            const rotation = influence * config.maxRotation * (Math.random() > 0.5 ? 1 : -1);
+                            const scale = 1 + influence * (config.maxScale - 1);
+                            
+                            letter.style.transform = `translate(${offsetX}px, ${offsetY}px) rotate(${rotation}deg) scale(${scale})`;
+                        } else {
+                            letter.style.transform = 'translate(0, 0) rotate(0deg) scale(1)';
+                        }
+                    });
+                    
+                    requestAnimationFrame(updateLetterTransforms);
+                };
+                
+                const handleMove = function(clientX, clientY) {
+                    mouseX = clientX;
+                    mouseY = clientY;
+                };
+                
+                document.addEventListener('mousemove', function(e) {
+                    handleMove(e.clientX, e.clientY);
+                });
+                
+                document.addEventListener('touchmove', function(e) {
+                    if (e.touches.length > 0) {
+                        handleMove(e.touches[0].clientX, e.touches[0].clientY);
+                    }
+                });
+                
+                document.addEventListener('touchend', function() {
+                    mouseX = -1000;
+                    mouseY = -1000;
+                });
+                
+                updateLetterTransforms();
+            }
         });
     </script>
 </body>
