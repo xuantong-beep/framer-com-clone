@@ -77,17 +77,19 @@
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(5px);
             background: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-radius: 12px;
             padding: 16px;
             margin-top: 15px;
-            display: none;
+            opacity: 0;
+            visibility: hidden;
             min-width: 360px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1001;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
         }
 
         .nav-dropdown-menu::before {
@@ -100,7 +102,9 @@
         }
         
         .nav-dropdown:hover .nav-dropdown-menu {
-            display: block;
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
         }
         
         .nav-dropdown-grid {
@@ -209,6 +213,10 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 15px;
+            text-align: justify;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
         
@@ -223,6 +231,30 @@
             padding-right: 60px;
             padding-bottom: 60px;
             text-align: center;
+        }
+        
+        .hero-top-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+        
+        .hero-top-text-left,
+        .hero-top-text-dot {
+            color: white;
+            transition: color 0.3s ease;
+        }
+        
+        .hero-top-text-right {
+            color: #999;
+            transition: color 0.3s ease;
+        }
+        
+        .hero-top-text:hover .hero-top-text-left,
+        .hero-top-text:hover .hero-top-text-dot,
+        .hero-top-text:hover .hero-top-text-right {
+            color: #666;
         }
         
         .hero-title {
@@ -1902,6 +1934,11 @@
     </nav>
 
     <section class="hero">
+        <p class="hero-top-text">
+            <span class="hero-top-text-left">State of Sites '26</span>
+            <span class="hero-top-text-dot"> • </span>
+            <span class="hero-top-text-right">Unlock the report now</span>
+        </p>
         <h1 class="hero-title" id="hero-title">
             <span class="letter">B</span><span class="letter">u</span><span class="letter">i</span><span class="letter">l</span><span class="letter">d</span><span class="letter">&nbsp;</span><span class="letter">b</span><span class="letter">e</span><span class="letter">t</span><span class="letter">t</span><span class="letter">e</span><span class="letter">r</span><br>
             <span class="letter">s</span><span class="letter">i</span><span class="letter">t</span><span class="letter">e</span><span class="letter">s</span><span class="letter">,</span><span class="letter">&nbsp;</span><span class="letter">f</span><span class="letter">a</span><span class="letter">s</span><span class="letter">t</span><span class="letter">e</span><span class="letter">r</span>
